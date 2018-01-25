@@ -1,0 +1,406 @@
+SQL ASSIGNMENT 1 - ANIRUDH KANNAN VP 201601004
+
+mysql root -u root -p
+
+CREATE DATABASE SQLANIRUDH;
+Query OK, 1 row affected (0.00 sec)
+
+USE SQLANIRUDH;
+Database changed
+
+CREATE TABLE STUDENT(SNUM INT PRIMARY KEY, SNAME VARCHAR(145), MAJOR VARCHAR(145), LEVEL VARCHAR(145), AGE INT);
+Query OK, 0 rows affected (0.35 sec)
+
+CREATE TABLE FACULTY(FID INT PRIMARY KEY,FNAME VARCHAR(145), DEPTID INT); 
+Query OK, 0 rows affected (0.36 sec)
+
+CREATE TABLE CLASS(NAME VARCHAR(145) PRIMARY KEY,MEETSAT VARCHAR(145), ROOM VARCHAR(145), FID INT, FOREIGN KEY CLASS(FID) REFERENCES FACULTY(FID));
+Query OK, 0 rows affected (0.38 sec)
+
+CREATE TABLE ENROLLED(SNUM INT, CNAME VARCHAR(145), PRIMARY KEY(SNUM,CNAME), FOREIGN KEY ENROLLED(SNUM) REFERENCES STUDENT(SNUM), FOREIGN KEY ENROLLED(CNAME) REFERENCES CLASS(NAME));
+Query OK, 0 rows affected (0.37 sec)
+
+LOAD DATA LOCAL INFILE "/home/lab2sys/Desktop/ANIRUDH/Student.txt" INTO TABLE STUDENT FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';Query OK, 24 rows affected (0.06 sec)
+Records: 24  Deleted: 0  Skipped: 0  Warnings: 0
+
+LOAD DATA LOCAL INFILE "/home/lab2sys/Desktop/ANIRUDH/Faculty.txt" INTO TABLE FACULTY FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
+Query OK, 15 rows affected (0.04 sec)
+Records: 15  Deleted: 0  Skipped: 0  Warnings: 0
+
+LOAD DATA LOCAL INFILE "/home/lab2sys/Desktop/ANIRUDH/Class.txt" INTO TABLE CLASS FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
+Query OK, 21 rows affected (0.16 sec)
+Records: 21  Deleted: 0  Skipped: 0  Warnings: 0
+
+INSERTING DATA ONE BY ONE TO CHECK FOR PRIMARY KEY:
+INSERT INTO ENROLLED VALUES(115987938,"'Database Systems'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(112348546,"'Database Systems'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(348121549,"'Database Systems'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(322654189,"'Database Systems'");
+Query OK, 1 row affected (0.02 sec)
+
+INSERT INTO ENROLLED VALUES(552455318,"'Database Systems'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(455798411,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(552455318,"'Operating System Design'");
+Query OK, 1 row affected (0.05 sec)
+
+INSERT INTO ENROLLED VALUES(567354612,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(112348546,"'Operating System Design'");
+Query OK, 1 row affected (0.05 sec)
+
+INSERT INTO ENROLLED VALUES(115987938,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(322654189,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(567354612,"'Data Structures'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(552455318,"'Communication Networks'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(455798411,"'Optical Electronics'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(301221823,"'Perception'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(301221823,"'Social Cognition'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(301221823,"'American Political Parties'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(556784565,"'Air Quality Engineering'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(099354543,"'Patent Law'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(574489456,"'Urban Economics'");
+Query OK, 1 row affected (0.02 sec)
+
+
+CHECKING THE LOADING OF DATA:
+
+SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| SQLANIRUDH         |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+DESC STUDENT;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| SNUM  | int(11)      | NO   | PRI | NULL    |       |
+| SNAME | varchar(145) | YES  |     | NULL    |       |
+| MAJOR | varchar(145) | YES  |     | NULL    |       |
+| LEVEL | varchar(145) | YES  |     | NULL    |       |
+| AGE   | int(11)      | YES  |     | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+SELECT * FROM STUDENT;
++-----------+----------------------+--------------------------+-------+------+
+| SNUM      | SNAME                | MAJOR                    | LEVEL | AGE  |
++-----------+----------------------+--------------------------+-------+------+
+|  51135593 | 'Maria White'        | 'English'                | 'SR'  |   21 |
+|  60839453 | 'Charles Harris'     | 'Architecture'           | 'So'  |   22 |
+|  99354543 | 'Susan Martin'       | 'Law'                    | 'JR'  |   20 |
+| 112348546 | 'Joseph Thompson'    | 'Computer Science'       | 'SO'  |   19 |
+| 115987938 | 'Christopher Garcia' | 'Computer Science'       | 'JR'  |   20 |
+| 132977562 | 'Angela Martinez'    | 'History'                | 'SR'  |   20 |
+| 269734834 | 'Thomas Robinson'    | 'Psychology'             | 'SO'  |   18 |
+| 280158572 | 'Margaret Clark'     | 'Animal Science'         | 'FR'  |   18 |
+| 301221823 | 'Juan Rodriguez'     | 'Psychology'             | 'JR'  |   20 |
+| 318548912 | 'Dorthy Lewis'       | 'Finance'                | 'FR'  |   18 |
+| 320874981 | 'Daniel Lee'         | 'Electrical Engineering' | 'FR'  |   17 |
+| 322654189 | 'Lisa Walker'        | 'Computer Science'       | 'SO'  |   17 |
+| 348121549 | 'Paul Hall'          | 'Computer Science'       | 'JR'  |   18 |
+| 351565322 | 'Nancy Allen'        | 'Accounting'             | 'JR'  |   19 |
+| 451519864 | 'Mark Young'         | 'Finance'                | 'FR'  |   18 |
+| 455798411 | 'Luis Hernandez'     | 'Electrical Engineering' | 'FR'  |   17 |
+| 462156489 | 'Donald King'        | 'Mechanical Engineering' | 'SO'  |   19 |
+| 550156548 | 'George Wright'      | 'Education'              | 'SR'  |   21 |
+| 552455318 | 'Ana Lopez'          | 'Computer Engineering'   | 'SR'  |   19 |
+| 556784565 | 'Kenneth Hill'       | 'Civil Engineering'      | 'SR'  |   21 |
+| 567354612 | 'Karen Scott'        | 'Computer Engineering'   | 'FR'  |   18 |
+| 573284895 | 'Steven Green'       | 'Kinesiology'            | 'SO'  |   19 |
+| 574489456 | 'Betty Adams'        | 'Economics'              | 'JR'  |   20 |
+| 578875478 | 'Edward Baker'       | 'Veterinary Medicine'    | 'SR'  |   21 |
++-----------+----------------------+--------------------------+-------+------+
+24 rows in set (0.00 sec)
+
+DESC FACULTY;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| FID    | int(11)      | NO   | PRI | NULL    |       |
+| FNAME  | varchar(145) | YES  |     | NULL    |       |
+| DEPTID | int(11)      | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+SELECT * FROM FACULTY;
++-----------+-------------------+--------+
+| FID       | FNAME             | DEPTID |
++-----------+-------------------+--------+
+|  11564812 | 'John Williams'   |     68 |
+|  90873519 | 'Elizabeth Taylor |     11 |
+| 141582651 | 'Mary Johnson'    |     20 |
+| 142519864 | 'Ivana Teach'     |     20 |
+| 159542516 | 'William Moore'   |     33 |
+| 242518965 | 'James Smith'     |     68 |
+| 248965255 | 'Barbara Wilson'  |     12 |
+| 254099823 | 'Patricia Jones'  |     68 |
+| 287321212 | 'Michael Miller'  |     12 |
+| 356187925 | 'Robert Brown'    |     12 |
+| 486512566 | 'David Anderson'  |     20 |
+| 489221823 | 'Richard Jackson' |     33 |
+| 489456522 | 'Linda Davis'     |     20 |
+| 548977562 | 'Ulysses Teach'   |     20 |
+| 619023588 | 'Jennifer Thomas' |     11 |
++-----------+-------------------+--------+
+15 rows in set (0.00 sec)
+
+mysql> DESC CLASS;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| NAME    | varchar(145) | NO   | PRI | NULL    |       |
+| MEETSAT | varchar(145) | YES  |     | NULL    |       |
+| ROOM    | varchar(145) | YES  |     | NULL    |       |
+| FID     | int(11)      | YES  | MUL | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+SELECT * FROM CLASS;
++-----------------------------------+------------------+----------+-----------+
+| NAME                              | MEETSAT          | ROOM     | FID       |
++-----------------------------------+------------------+----------+-----------+
+| 'Air Quality Engineering'         | TuTh 10:30-11:45 | R15      |  11564812 |
+| 'American Political Parties'      | TuTh 2-3:15      | 20 AVW   | 619023588 |
+| 'Archaeology of the Incas'        | MWF 3-4:15       | R128     | 248965255 |
+| 'Aviation Accident Investigation' | TuTh 1-2:50      | Q3       |  11564812 |
+| 'Communication Networks'          | MW 9:30-10:45    | 20 AVW   | 141582651 |
+| 'Dairy Herd Management'           | TuTh 12:30-1:45  | R128     | 356187925 |
+| 'Data Structures'                 | MWF 10           | R128     | 489456522 |
+| 'Database Systems'                | MWF 12:30-1:45   | 1320 DCL | 142519864 |
+| 'Intoduction to Math'             | TuTh 8-9:30      | R128     | 489221823 |
+| 'Introductory Latin'              | MWF 3-4:15       | R12      | 248965255 |
+| 'Marketing Research'              | MW 10-11:15      | 1320 DCL | 489221823 |
+| 'Multivariate Analysis'           | TuTh 2-3:15      | R15      |  90873519 |
+| 'Operating System Design'         | TuTh 12-1:20     | 20 AVW   | 489456522 |
+| 'Optical Electronics'             | TuTh 12:30-1:45  | R15      | 254099823 |
+| 'Orbital Mechanics'               | MWF 8            | 1320 DCL |  11564812 |
+| 'Organic Chemistry'               | TuTh 12:30-1:45  | R12      | 489221823 |
+| 'Patent Law'                      | F 1-2:50         | R128     |  90873519 |
+| 'Perception'                      | MTuWTh 3'        | Q3       | 489221823 |
+| 'Seminar in American Art'         | M 4              | R15      | 489221823 |
+| 'Social Cognition'                | Tu 6:30-8:40     | R15      | 159542516 |
+| 'Urban Economics'                 | MWF 11           | 20 AVW   | 489221823 |
++-----------------------------------+------------------+----------+-----------+
+21 rows in set (0.00 sec)
+
+DESC ENROLLED;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| SNUM  | int(11)      | NO   | PRI | NULL    |       |
+| CNAME | varchar(145) | NO   | PRI | NULL    |       |
++-------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+SELECT * FROM ENROLLED;
++-----------+------------------------------+
+| SNUM      | CNAME                        |
++-----------+------------------------------+
+| 556784565 | 'Air Quality Engineering'    |
+| 301221823 | 'American Political Parties' |
+| 552455318 | 'Communication Networks'     |
+| 567354612 | 'Data Structures'            |
+| 112348546 | 'Database Systems'           |
+| 115987938 | 'Database Systems'           |
+| 322654189 | 'Database Systems'           |
+| 348121549 | 'Database Systems'           |
+| 552455318 | 'Database Systems'           |
+| 112348546 | 'Operating System Design'    |
+| 115987938 | 'Operating System Design'    |
+| 322654189 | 'Operating System Design'    |
+| 455798411 | 'Operating System Design'    |
+| 552455318 | 'Operating System Design'    |
+| 567354612 | 'Operating System Design'    |
+| 455798411 | 'Optical Electronics'        |
+|  99354543 | 'Patent Law'                 |
+| 301221823 | 'Perception'                 |
+| 301221823 | 'Social Cognition'           |
+| 574489456 | 'Urban Economics'            |
++-----------+------------------------------+
+20 rows in set (0.00 sec)
+
+QUERIES:-
+
+2.Find the names of the youngest students:
+
+SELECT SNAME FROM STUDENT WHERE AGE=(SELECT MIN(AGE) FROM STUDENT);
++------------------+
+| SNAME            |
++------------------+
+| 'Daniel Lee'     |
+| 'Lisa Walker'    |
+| 'Luis Hernandez' |
++------------------+
+3 rows in set (0.04 sec)
+
+3.Find the names of students not enrolled in any class.
+
+SELECT SNAME FROM STUDENT WHERE SNUM NOT IN (SELECT SNUM FROM ENROLLED);
++-------------------+
+| SNAME             |
++-------------------+
+| 'Maria White'     |
+| 'Charles Harris'  |
+| 'Angela Martinez' |
+| 'Thomas Robinson' |
+| 'Margaret Clark'  |
+| 'Dorthy Lewis'    |
+| 'Daniel Lee'      |
+| 'Nancy Allen'     |
+| 'Mark Young'      |
+| 'Donald King'     |
+| 'George Wright'   |
+| 'Steven Green'    |
+| 'Edward Baker'    |
++-------------------+
+13 rows in set (0.05 sec)
+
+4.Find the names of faculty members who teach in every room in which some class is taught.
+
+SELECT FNAME FROM FACULTY WHERE FID IN (SELECT FID FROM CLASS GROUP BY FID HAVING COUNT(FID) = (SELECT COUNT(DISTINCT(ROOM)) FROM CLASS) );
+
++-------------------+
+| FNAME             |
++-------------------+
+| 'Richard Jackson' |
++-------------------+
+1 row in set (0.28 sec)
+
+
+
+5. Find the names of students who enroll in all courses
+
+SELECT SNAME FROM STUDENT WHERE SNUM IN (SELECT SNUM FROM STUDENT GROUP BY SNUM HAVING COUNT(SNAME)=(SELECT COUNT(DISTINCT(NAME)) FROM CLASS));
+
+Empty set (0.00 sec)
+
+
+
+
+6. Find the names of all classes that either meet in room R128 or have five
+or more students enrolled.
+
+
+SELECT NAME FROM CLASS WHERE ROOM="R128" OR NAME IN (SELECT CNAME FROM ENROLLED GROUP BY CNAME HAVING COUNT(*) >= 5);
++----------------------------+
+| NAME                       |
++----------------------------+
+| 'Archaeology of the Incas' |
+| 'Dairy Herd Management'    |
+| 'Data Structures'          |
+| 'Database Systems'         |
+| 'Intoduction to Math'      |
+| 'Operating System Design'  |
+| 'Patent Law'               |
++----------------------------+
+7 rows in set (0.01 sec)
+
+
+7.	List all students in decreasing order of their ages
+
+SELECT SNAME,AGE FROM STUDENT ORDER BY AGE DESC;
++----------------------+------+
+| SNAME                | AGE  |
++----------------------+------+
+| 'Charles Harris'     |   22 |
+| 'Edward Baker'       |   21 |
+| 'Maria White'        |   21 |
+| 'Kenneth Hill'       |   21 |
+| 'George Wright'      |   21 |
+| 'Susan Martin'       |   20 |
+| 'Betty Adams'        |   20 |
+| 'Juan Rodriguez'     |   20 |
+| 'Angela Martinez'    |   20 |
+| 'Christopher Garcia' |   20 |
+| 'Steven Green'       |   19 |
+| 'Joseph Thompson'    |   19 |
+| 'Ana Lopez'          |   19 |
+| 'Nancy Allen'        |   19 |
+| 'Donald King'        |   19 |
+| 'Mark Young'         |   18 |
+| 'Karen Scott'        |   18 |
+| 'Paul Hall'          |   18 |
+| 'Dorthy Lewis'       |   18 |
+| 'Margaret Clark'     |   18 |
+| 'Thomas Robinson'    |   18 |
+| 'Luis Hernandez'     |   17 |
+| 'Lisa Walker'        |   17 |
+| 'Daniel Lee'         |   17 |
++----------------------+------+
+24 rows in set (0.04 sec)
+
+8.Display system information, metadata about your database
+
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='SQLANIRUDH';
++---------------+--------------+------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-------------------+----------+----------------+---------------+
+| TABLE_CATALOG | TABLE_SCHEMA | TABLE_NAME | TABLE_TYPE | ENGINE | VERSION | ROW_FORMAT | TABLE_ROWS | AVG_ROW_LENGTH | DATA_LENGTH | MAX_DATA_LENGTH | INDEX_LENGTH | DATA_FREE | AUTO_INCREMENT | CREATE_TIME         | UPDATE_TIME         | CHECK_TIME | TABLE_COLLATION   | CHECKSUM | CREATE_OPTIONS | TABLE_COMMENT |
++---------------+--------------+------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-------------------+----------+----------------+---------------+
+| def           | SQLANIRUDH   | CLASS      | BASE TABLE | InnoDB |      10 | Dynamic    |         21 |            780 |       16384 |               0 |        16384 |         0 |           NULL | 2018-01-25 10:45:16 | 2018-01-25 10:58:48 | NULL       | latin1_swedish_ci |     NULL |                |               |
+| def           | SQLANIRUDH   | ENROLLED   | BASE TABLE | InnoDB |      10 | Dynamic    |         17 |            963 |       16384 |               0 |        16384 |         0 |           NULL | 2018-01-25 10:50:45 | 2018-01-25 11:20:12 | NULL       | latin1_swedish_ci |     NULL |                |               |
+| def           | SQLANIRUDH   | FACULTY    | BASE TABLE | InnoDB |      10 | Dynamic    |         15 |           1092 |       16384 |               0 |            0 |         0 |           NULL | 2018-01-25 10:42:23 | 2018-01-25 10:57:40 | NULL       | latin1_swedish_ci |     NULL |                |               |
+| def           | SQLANIRUDH   | STUDENT    | BASE TABLE | InnoDB |      10 | Dynamic    |         24 |            682 |       16384 |               0 |            0 |         0 |           NULL | 2018-01-25 10:41:16 | 2018-01-25 10:56:19 | NULL       | latin1_swedish_ci |     NULL |                |               |
++---------------+--------------+------------+------------+--------+---------+------------+------------+----------------+-------------+-----------------+--------------+-----------+----------------+---------------------+---------------------+------------+-------------------+----------+----------------+---------------+
+4 rows in set (0.04 sec)
+
+9.Try to delete records from Faculty where record exists in Class for the faculty.
+
+DELETE FROM FACULTY WHERE FID IN (SELECT FID FROM CLASS);
+
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`SQLANIRUDH`.`CLASS`, CONSTRAINT `CLASS_ibfk_1` FOREIGN KEY (`FID`) REFERENCES `FACULTY` (`FID`))
+
+10.Try to insert or update records which violate integrity/key constraints.
+
+INSERT INTO STUDENT (SNUM,SNAME,MAJOR,LEVEL,AGE) VALUES (5123241,'aNSAD','major','pt',13);
+ERROR 1062 (23000): Duplicate entry 5123241 for key 'PRIMARY'
+
+11.Run queries on metadata.
+
+SELECT table_name,table_type,engine,table_rows,avg_row_length,index_length,create_time FROM information_schema.tables WHERE table_schema NOT IN ('information_schema', 'mysql') AND table_schema='assign1' AND table_rows>=20;
++------------+------------+--------+------------+----------------+--------------+---------------------+
+| table_name | table_type | engine | table_rows | avg_row_length | index_length | create_time         |
++------------+------------+--------+------------+----------------+--------------+---------------------+
+| class      | BASE TABLE | InnoDB |         21 |            780 |        16384 | 2018-01-25 10:55:19 |
+| enrolled   | BASE TABLE | InnoDB |         20 |            819 |            0 | 2018-01-25 10:50:01 |
+| student    | BASE TABLE | InnoDB |         24 |            682 |            0 | 2018-01-25 02:54:43 |
++------------+------------+--------+------------+----------------+--------------+---------------------+
+
+
+

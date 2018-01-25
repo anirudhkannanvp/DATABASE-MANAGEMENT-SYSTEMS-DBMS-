@@ -1,0 +1,60 @@
+INSERT INTO ENROLLED VALUES(115987938,"'Database Systems'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(112348546,"'Database Systems'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(348121549,"'Database Systems'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(322654189,"'Database Systems'");
+Query OK, 1 row affected (0.02 sec)
+
+INSERT INTO ENROLLED VALUES(552455318,"'Database Systems'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(455798411,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(552455318,"'Operating System Design'");
+Query OK, 1 row affected (0.05 sec)
+
+INSERT INTO ENROLLED VALUES(567354612,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(112348546,"'Operating System Design'");
+Query OK, 1 row affected (0.05 sec)
+
+INSERT INTO ENROLLED VALUES(115987938,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(322654189,"'Operating System Design'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(567354612,"'Data Structures'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(552455318,"'Communication Networks'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(455798411,"'Optical Electronics'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(301221823,"'Perception'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(301221823,"'Social Cognition'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(301221823,"'American Political Parties'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(556784565,"'Air Quality Engineering'");
+Query OK, 1 row affected (0.03 sec)
+
+INSERT INTO ENROLLED VALUES(099354543,"'Patent Law'");
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO ENROLLED VALUES(574489456,"'Urban Economics'");
+Query OK, 1 row affected (0.02 sec)
+
