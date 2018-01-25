@@ -388,18 +388,18 @@ ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constrai
 
 10.Try to insert or update records which violate integrity/key constraints.
 
-INSERT INTO STUDENT (SNUM,SNAME,MAJOR,LEVEL,AGE) VALUES (5123241,'aNSAD','major','pt',13);
+INSERT INTO STUDENT (SNUM,SNAME,MAJOR,LEVEL,AGE) VALUES (51135593,'aNSAD','major','pt',13);
 ERROR 1062 (23000): Duplicate entry 5123241 for key 'PRIMARY'
 
 11.Run queries on metadata.
 
-SELECT table_name,table_type,engine,table_rows,avg_row_length,index_length,create_time FROM information_schema.tables WHERE table_schema NOT IN ('information_schema', 'mysql') AND table_schema='assign1' AND table_rows>=20;
+SELECT table_name,table_type,engine,table_rows,avg_row_length,index_length,create_time FROM information_schema.tables WHERE table_schema NOT IN ('information_schema', 'mysql') AND table_schema='SQLANIRUDH' AND table_rows>=20;
 +------------+------------+--------+------------+----------------+--------------+---------------------+
 | table_name | table_type | engine | table_rows | avg_row_length | index_length | create_time         |
 +------------+------------+--------+------------+----------------+--------------+---------------------+
-| class      | BASE TABLE | InnoDB |         21 |            780 |        16384 | 2018-01-25 10:55:19 |
-| enrolled   | BASE TABLE | InnoDB |         20 |            819 |            0 | 2018-01-25 10:50:01 |
-| student    | BASE TABLE | InnoDB |         24 |            682 |            0 | 2018-01-25 02:54:43 |
+| CLASS      | BASE TABLE | InnoDB |         21 |            780 |        16384 | 2018-01-25 10:55:19 |
+| ENROLLED   | BASE TABLE | InnoDB |         20 |            819 |            0 | 2018-01-25 10:50:01 |
+| STUDENT    | BASE TABLE | InnoDB |         24 |            682 |            0 | 2018-01-25 02:54:43 |
 +------------+------------+--------+------------+----------------+--------------+---------------------+
 
 
